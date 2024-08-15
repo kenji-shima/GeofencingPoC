@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Geofenceデモ</string>
+    <string name="move_to">移動</string>
+    <string name="start_point">始点</string>
+    <string name="end_point">終点</string>
+    <string name="cancel">中止</string>
+    <string name="seven_eleven">セブンイレブン</string>
+    <string name="entered_time">入圏時間</string>
+    <string name="exited_time">出圏時間</string>
+    <string name="dwell_start_time">滞在開始時間</string>
+</resources>

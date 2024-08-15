@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><!-- res/drawable/user_direction_circle.xml -->
+<!-- res/drawable/user_direction_circle.xml -->
+<!-- res/drawable/user_direction_circle.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
+
+    <!-- Outer Circle Line -->
+    <path
+        android:strokeColor="#CCD70040"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M18,7.5a10.5,10.5 0,1,1 0,21,10.5 10.5,0,1,1 0,-21"/>
+
+    <!-- Inner Circle Line -->
+    <path
+        android:strokeColor="#CCD70040"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M18,9a9,9 0,1,1 0,18,9 9,0,1,1 0,-18"/>
+
+    <!-- Equilateral Triangle indicating direction -->
+    <!-- The triangle is positioned slightly outside the outer circle -->
+    <path
+        android:fillColor="#CCD70040"
+        android:pathData="M18,0.75 l-4.5,7.794h9l-4.5,-7.794z"/>
+</vector>
+
+
+
+
+
+
