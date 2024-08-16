@@ -11,9 +11,6 @@ To use this app, you need to set it as the mock location app in the developer se
 
 <img src="assets/images/AndroidSettings.jpg" alt="Mock Location Setting" width="300"/>
 
-### 2. Mapbox Access Token
-Before running the app, update the `mapbox_access_token` in the `strings.xml` file with a valid Mapbox public access token.
-
 ## How to Use the App
 
 1. **Moving the Current Location**  
