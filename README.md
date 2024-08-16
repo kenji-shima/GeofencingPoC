@@ -9,7 +9,7 @@ To use this app, you need to set it as the mock location app in the developer se
 - Go to **Settings** > **Developer options**.
 - Select **Mock location app** and choose this app.
 
-![Mock Location Setting](assets/images/AndroidSettings.jpg)
+<img src="assets/images/AndroidSettings.jpg" alt="Mock Location Setting" width="300"/>
 
 ### 2. Mapbox Access Token
 Before running the app, update the `mapbox_access_token` in the `strings.xml` file with a valid Mapbox public access token.
@@ -30,7 +30,7 @@ Before running the app, update the `mapbox_access_token` in the `strings.xml` fi
    Click on the stop button to end the puck's movement.  
    When Geofence events occur, they will be displayed as panels on the screen.
 
-![App Screenshot](assets/images/Screenshot.jpg)
+<img src="assets/images/Screenshot.jpg" alt="App Screenshot" width="400"/>
 
 ## Demo Video
 Watch the app in action:
