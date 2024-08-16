@@ -54,12 +54,14 @@ class GeofencingViewModel @Inject constructor() : ViewModel(){
         _dwellTimesFlow.value = _dwellTimesFlow.value.toMutableMap().apply {
             put(id, time)
         }
+        setAllArticlesToVisible()
     }
 
     fun setExitedTime(id: String, time: String){
         _exitedTimesFlow.value = _exitedTimesFlow.value.toMutableMap().apply {
             put(id, time)
         }
+        setAllArticlesToVisible()
     }
 
     fun setIsVisible(article: InfoArticle, isVisible: Boolean) {
@@ -79,6 +81,10 @@ class GeofencingViewModel @Inject constructor() : ViewModel(){
         _infoArticlesFlow.value = listOf(article) + _infoArticlesFlow.value
         _isVisibleStatesFlow.value = _isVisibleStatesFlow.value.mapValues { true }
         _isVisibleStatesFlow.value = mapOf(article to false) + _isVisibleStatesFlow.value
+    }
+
+    fun setAllArticlesToVisible(){
+        _isVisibleStatesFlow.value = _isVisibleStatesFlow.value.mapValues { true }
     }
 
     fun incrementId() {

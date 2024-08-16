@@ -22,10 +22,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -39,7 +39,6 @@ import com.mapbox.geofencing.logic.navigation.LocationHandler
 import com.mapbox.geofencing.logic.navigation.NavigationHandler
 import com.mapbox.geofencing.logic.search.SearchHandler
 import com.mapbox.geofencing.model.GeofencingViewModel
-import kotlinx.coroutines.launch
 
 class Controls() {
 
@@ -67,7 +66,6 @@ class Controls() {
                             MapFragment.longClickedPoint!!.longitude()).latitude(MapFragment.longClickedPoint!!.latitude()).build())
                         LocationHandler.setReplayLocationProvider()
                         viewModel.setShowLocationPanel(false)
-
                     }) {
                         Text(MapFragment.context.getString(R.string.move_to))
                     }
@@ -100,7 +98,6 @@ class Controls() {
         @Composable
         fun InfoList() {
             val lazyListState = rememberLazyListState()
-            val coroutineScope = rememberCoroutineScope()
 
             val viewModel: GeofencingViewModel = hiltViewModel()
             val infoArticles by viewModel.infoArticlesFlow.collectAsState()
@@ -125,9 +122,9 @@ class Controls() {
                             }
                         }
                     }
-                    coroutineScope.launch {
-                        lazyListState.scrollToItem(0)
-                    }
+                }
+                LaunchedEffect(infoArticles) {
+                    lazyListState.scrollToItem(0)
                 }
             }
         }
@@ -135,16 +132,22 @@ class Controls() {
         private const val buttonSize = 60
         private const val buttonPadding = 10
 
-        @SuppressLint("StateFlowValueCalledInComposition")
         @Composable
         fun Buttons() {
+            ButtonsLeft()
+            ButtonsRight()
+        }
+
+        @SuppressLint("StateFlowValueCalledInComposition")
+        @Composable
+        fun ButtonsLeft() {
             val viewModel: GeofencingViewModel = hiltViewModel()
             val isNavigationReady = viewModel.isNavigationReadyFlow.collectAsState()
             Box(modifier = Modifier.fillMaxSize()) {
                 Column(
                     modifier = Modifier
                         .padding(buttonPadding.dp)
-                        .align(Alignment.BottomEnd)
+                        .align(Alignment.BottomStart)
                 ) {
                     IconButton(
                         modifier = buttonsModifier(30, true),
@@ -153,17 +156,6 @@ class Controls() {
                             painter = painterResource(id = R.drawable.baseline_my_location_24),
                             tint = Color.Black,
                             contentDescription = "To Current Location"
-                        )
-                    }
-                    IconButton(
-                        modifier = buttonsModifier(30, true),
-                        onClick = {
-                            //SearchHandler.search(SearchHandler.coffeeQuery, "スターバックス", "starbucks")
-                            SearchHandler.forwardSearch(MapFragment.context.getString(R.string.seven_eleven), "seveneleven")
-                        }) {
-                        Image(
-                            painter = painterResource(id = R.drawable.seveneleven),
-                            contentDescription = "Find Starbucks"
                         )
                     }
                     IconButton(
@@ -193,12 +185,67 @@ class Controls() {
             }
         }
 
+        @SuppressLint("StateFlowValueCalledInComposition")
+        @Composable
+        fun ButtonsRight() {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Column(
+                    modifier = Modifier
+                        .padding(buttonPadding.dp)
+                        .align(Alignment.BottomEnd)
+                ) {
+                    IconButton(
+                        modifier = buttonsModifier(30, true),
+                        onClick = {
+                            SearchHandler.forwardSearch(MapFragment.context.getString(R.string.seven_eleven), "seveneleven")
+                        }) {
+                        Image(
+                            painter = painterResource(id = R.drawable.seveneleven),
+                            contentDescription = "Find Seven Eleven"
+                        )
+                    }
+                    IconButton(
+                        modifier = buttonsModifier(30, true),
+                        onClick = {
+                            //SearchHandler.search(SearchHandler.coffeeQuery, "スターバックス", "starbucks")
+                            SearchHandler.forwardSearch(MapFragment.context.getString(R.string.starbucks), "starbucks")
+                        }) {
+                        Image(
+                            painter = painterResource(id = R.drawable.starbucks),
+                            contentDescription = "Find Starbucks"
+                        )
+                    }
+                    IconButton(
+                        modifier = buttonsModifier(30, true),
+                        onClick = {
+                            SearchHandler.forwardSearch(MapFragment.context.getString(R.string.cheers), "cheers")
+                        }) {
+                        Image(
+                            painter = painterResource(id = R.drawable.cheers),
+                            contentDescription = "Find Cheers"
+                        )
+                    }
+                    IconButton(
+                        modifier = buttonsModifier(30, true),
+                        onClick = {
+                            SearchHandler.forwardSearch(MapFragment.context.getString(R.string.mcdonalds), "mcdonalds")
+                        }) {
+                        Image(
+                            painter = painterResource(id = R.drawable.mcdonalds),
+                            contentDescription = "Find McDonald's"
+                        )
+                    }
+                }
+            }
+        }
+
         private fun buttonsModifier(corners: Int, isEnabled: Boolean): Modifier {
             return Modifier
                 .size(buttonSize.dp)
                 .padding(buttonPadding.dp)
-                .background(color = Color.White, shape = RoundedCornerShape(corners.dp)).then(
-                    if(isEnabled)Modifier.alpha(1.0f) else Modifier.alpha(0.1f)
+                .background(color = Color.White, shape = RoundedCornerShape(corners.dp))
+                .then(
+                    if (isEnabled) Modifier.alpha(1.0f) else Modifier.alpha(0.1f)
                 )
         }
 

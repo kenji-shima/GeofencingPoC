@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Geofence</string>
-    <string name="mapbox_access_token" translatable="false">YOUR_TOKEN</string>
+    <string name="mapbox_access_token" translatable="false">YOUR_KEY</string>
     <string name="move_to">Move</string>
     <string name="start_point">Start</string>
     <string name="end_point">End</string>
@@ -9,4 +9,7 @@
     <string name="entered_time">Entered Time</string>
     <string name="exited_time">Exited Time</string>
     <string name="dwell_start_time">Dwell Start Time</string>
+    <string name="starbucks">Starbucks</string>
+    <string name="cheers">Cheers</string>
+    <string name="mcdonalds">McDonald\'s</string>
 </resources>

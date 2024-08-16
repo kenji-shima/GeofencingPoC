@@ -78,7 +78,8 @@ class GeofenceHandler {
                 private fun addToInfoList(feature: Feature){
                     val color = Utils.hexToComposeColor(feature.getStringProperty("geofenceColor"))
                     val article = InfoArticle(
-                        title = feature.properties()?.get("name").toString(),
+                        title = "${feature.properties()?.get("name").toString()}",
+                        address = "${feature.properties()?.get("address").toString()}",
 //                        drawable = R.drawable.starbucks,
                         color = color,
                         enteredTime = Utils.getCurrentTime()

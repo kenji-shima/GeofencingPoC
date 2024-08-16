@@ -101,34 +101,58 @@ fun InfoCard(infoArticle: InfoArticle, isVisible: Boolean) {
                 )
 
             }
+            Row(
+                modifier = Modifier
+                    .height(IntrinsicSize.Min)
+                    .alpha(visibilityAlpha),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = infoArticle.address.replace("\"", ""),
+                    fontSize = 11.sp,
+                    color = Color.White
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .height(IntrinsicSize.Min)
+                    .alpha(visibilityAlpha),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = "${MapFragment.context.getString(R.string.entered_time)} [${infoArticle.enteredTime}]",
+                    fontSize = 10.sp,
+                    color = Color.White
+                )
+            }
+            exitedTimes.value[infoArticle.exitedId]?.let {
                 Row(
                     modifier = Modifier
                         .height(IntrinsicSize.Min)
                         .alpha(visibilityAlpha),
                     verticalAlignment = Alignment.CenterVertically,
-                ){
-                    Text(text = "${MapFragment.context.getString(R.string.entered_time)} [${infoArticle.enteredTime}]", fontSize = 10.sp, color = Color.White)
+                ) {
+                    Text(
+                        text = "${MapFragment.context.getString(R.string.exited_time)} [$it]",
+                        fontSize = 10.sp,
+                        color = Color.White
+                    )
                 }
-                exitedTimes.value[infoArticle.exitedId]?.let {
-                    Row(
-                        modifier = Modifier
-                            .height(IntrinsicSize.Min)
-                            .alpha(visibilityAlpha),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Text(text = "${MapFragment.context.getString(R.string.exited_time)} [$it]", fontSize = 10.sp, color = Color.White)
-                    }
+            }
+            dwelledTimes.value[infoArticle.dwelledId]?.let {
+                Row(
+                    modifier = Modifier
+                        .height(IntrinsicSize.Min)
+                        .alpha(visibilityAlpha),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = "${MapFragment.context.getString(R.string.dwell_start_time)} [$it]",
+                        fontSize = 10.sp,
+                        color = Color.White
+                    )
                 }
-                dwelledTimes.value[infoArticle.dwelledId]?.let {
-                    Row(
-                        modifier = Modifier
-                            .height(IntrinsicSize.Min)
-                            .alpha(visibilityAlpha),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Text(text = "${MapFragment.context.getString(R.string.dwell_start_time)} [$it]", fontSize = 10.sp, color = Color.White)
-                    }
-                }
+            }
         }
 //        Image(
 //            modifier = Modifier

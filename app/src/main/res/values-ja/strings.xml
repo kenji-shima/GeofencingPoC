@@ -8,4 +8,7 @@
     <string name="entered_time">入圏時間</string>
     <string name="exited_time">出圏時間</string>
     <string name="dwell_start_time">滞在開始時間</string>
+    <string name="starbucks">スターバックス</string>
+    <string name="cheers">Cheers</string>
+    <string name="mcdonalds">マクドナルド</string>
 </resources>

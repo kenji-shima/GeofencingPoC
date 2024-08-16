@@ -46,7 +46,10 @@ class Utils {
             endMarker?.let { iconsMap["end"] = endMarker }
             val blankMarker = bitmapFromDrawableRes(MapFragment.context, R.drawable.ic_placeholder_marker)
             blankMarker?.let { iconsMap["holder"] = blankMarker }
-
+            val cheers = bitmapFromDrawableRes(MapFragment.context, R.drawable.cheers)
+            cheers?.let { iconsMap["cheers"] = cheers }
+            val mcdonalds = bitmapFromDrawableRes(MapFragment.context, R.drawable.mcdonalds)
+            mcdonalds?.let { iconsMap["mcdonalds"] = mcdonalds }
         }
 
         fun addIconsToStyle(style: Style){
@@ -54,6 +57,10 @@ class Utils {
             style.addImage("starbucks", starbucks)
             val seveneleven = BitmapFactory.decodeResource(MapFragment.context.resources, R.drawable.seveneleven)
             style.addImage("seveneleven", seveneleven)
+            val cheers = BitmapFactory.decodeResource(MapFragment.context.resources, R.drawable.cheers)
+            style.addImage("cheers", cheers)
+            val mcdonalds = BitmapFactory.decodeResource(MapFragment.context.resources, R.drawable.mcdonalds)
+            style.addImage("mcdonalds", mcdonalds)
         }
 
         private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) : Bitmap? =

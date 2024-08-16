@@ -6,6 +6,7 @@ import com.mapbox.geofencing.R
 data class InfoArticle(
     var id: String = "0",
     var title: String = "",
+    var address: String = "",
     var enteredTime: String = "",
     var exitedId: String = "",
     var exitedTime: String = "",

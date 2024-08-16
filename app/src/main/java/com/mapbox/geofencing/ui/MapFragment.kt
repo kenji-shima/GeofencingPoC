@@ -157,7 +157,7 @@ class MapFragment : Fragment() {
                                 stop(15.0, 1.0)
                             }
                         )
-                        textAllowOverlap(true)
+                        textAllowOverlap(false)
                         iconAllowOverlap(true)
                     }
                 )
