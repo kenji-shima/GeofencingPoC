@@ -1,6 +1,6 @@
 # Geofence Demo App
 
-This repository contains a Geofence demo application built with Android and Kotlin. The app allows users to mock locations and visualize geofencing events on a map. It utilizes the Mapbox SDK and associated APIs to create a comprehensive demonstration of geofencing capabilities.
+This repository contains a Geofence demo application built with Android and Kotlin. The app allows users to mock locations and visualize Mapbox geofencing events on a map.
 
 ## Setup
 
